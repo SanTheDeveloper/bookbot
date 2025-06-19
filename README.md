@@ -24,7 +24,6 @@ BookBot is a command-line text analysis tool that processes books (text files) a
 3. **Output**: Prints:
    - Total word count
    - Sorted letter frequencies (descending order)
-   - Visual histogram of letter usage
 
 ## 🚀 Sample Output
 
@@ -60,3 +59,42 @@ The 'q' character was found 324 times
 The 'z' character was found 234 times
 --- End report ---
 ```
+
+## 🛠️ Installation & Usage
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/SanTheDeveloper/bookbot
+cd bookbot
+```
+
+2. **Run the analyzer**:
+
+```bash
+python bookbot.py books/frankenstein.txt
+```
+
+_To analyze other books, replace `frankenstein.txt` with your text file path_
+
+## 📊 Key Takeaways
+
+- Practical experience processing large text datasets
+- Dictionary manipulation for analytics
+- Real-world data cleaning and reporting techniques
+- Foundation for more complex NLP/text analysis projects
+- Understanding of text processing fundamentals
+
+## 🚧 Project Structure
+
+```text
+bookbot/
+├── books/                   # Sample books directory
+│   └── frankenstein.txt     # Example book file
+├── bookbot.py               # Main application code
+└── README.md                # Project documentation
+```
+
+## 📜 License
+
+This project is part of the Boot.dev curriculum. Feel free to use it as a learning resource!
