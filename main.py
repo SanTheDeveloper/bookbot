@@ -1,16 +1,11 @@
+from stats import get_word_count  # New Import
+
+
 def get_book_text(path):
     # Use the with block to open and automatically close the file
     with open(path) as f:
         # Use .read() method to get the entire content as a single string
         return f.read()
-
-
-# New Function to count words
-def get_word_count(text):
-    # .split() splits the string into a list of words based on whitespace
-    words = text.split()
-    # The number of words is the length of the list
-    return len(words)
 
 
 def main():
