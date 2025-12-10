@@ -5,6 +5,14 @@ def get_book_text(path):
         return f.read()
 
 
+# New Function to count words
+def get_word_count(text):
+    # .split() splits the string into a list of words based on whitespace
+    words = text.split()
+    # The number of words is the length of the list
+    return len(words)
+
+
 def main():
     # Define the relative path to the book file
     book_path = "books/frankenstein.txt"
@@ -12,8 +20,11 @@ def main():
     # Get the text content
     text = get_book_text(book_path)
 
-    # Print the entire content to the console as required by the test
-    print(text)
+    # Calculate the word count
+    num_words = get_word_count(text)
+
+    # Print the required output message
+    print(f"Found {num_words} total words")
 
 
 # Call the main function to run the program
