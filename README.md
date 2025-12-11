@@ -87,10 +87,11 @@ z: 235
 
 ```text
 bookbot/
-├── books/                   # Sample books directory
-│   └── frankenstein.txt     # Example book file
-├── bookbot.py               # Main application code
-└── README.md                # Project documentation
+├── books/                             # Directory to store text files
+│   └── frankenstein.txt               # Example input book
+├── main.py                            # Main application script (handles I/O, argument parsing, report printing)
+├── stats.py                           # Core logic (get_word_count, get_char_count, sorting functions)
+└── README.md                          # Project documentation
 ```
 
 ## 📜 License
