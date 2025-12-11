@@ -1,57 +1,69 @@
 def get_word_count(text):
-    # .split() splits the string into a list of words based on whitespace
+    """
+    Calculates the total number of words in the given text string.
+    """
+    # .split() without arguments splits the string into a list of words,
+    # using any sequence of whitespace (spaces, tabs, newlines) as a delimiter.
     words = text.split()
-    # The number of words is the length of the list
+
+    # The number of words is simply the number of elements in the resulting list.
     return len(words)
 
 
 def get_char_count(text):
     """
-    Counts the number of times each character (including symbols and spaces)
-    appears in the text, converting all characters to lowercase.
+    Counts the frequency of every character (including spaces and symbols)
+    in the text. All characters are converted to lowercase to avoid duplicates
+    (e.g., 'A' and 'a' are counted together).
     """
+    # Initialize an empty dictionary to store character -> count mappings.
     counts = {}
 
-    # Iterate through the text, character by character
+    # Iterate through the text, processing one character at a time.
     for char in text:
-        # Convert the character to lowercase
+        # Ensures case-insensitivity by treating 'A' and 'a' as the same key ('a').
         lowered_char = char.lower()
 
-        # Update the count in the dictionary
-        # Use .get() to handle new characters easily: if the key doesn't exist,
-        # it defaults to 0 before we add 1.
+        # Efficiently update the count in the dictionary:
+        # counts.get(key, default) retrieves the current count or returns
+        # the 'default' value (0) if the key is not found (first time seeing the char).
         counts[lowered_char] = counts.get(lowered_char, 0) + 1
 
     return counts
 
 
-# --- New Code for Sorting ---
+# --- Helper Function for Sorting ---
 
 
 def sort_on(d):
     """
-    Helper function to return the value of the "num" key for sorting.
+    This is a 'key' function used by the .sort() method.
+    It tells Python to sort the list of dictionaries based on the value
+    associated with the 'num' key in each dictionary.
     """
     return d["num"]
 
 
 def get_sorted_char_list(char_count_dict):
     """
-    Takes a dictionary of character counts, filters for alphabetical characters,
-    converts to a list of dictionaries, and sorts them by count.
+    Converts a raw character count dictionary into a sorted list of dictionaries.
+    It only includes characters that are part of the alphabet (a-z).
     """
     sorted_list = []
 
-    # Iterate through the character count dictionary
+    # Iterate through the key-value pairs (character and its count) of the dictionary.
     for char, count in char_count_dict.items():
-        # Skip the character if it is NOT an alphabetical character
+        # .isalpha() returns True if the string contains only alphabet characters (a-z, A-Z).
+        # We skip spaces, punctuation, and other symbols by checking this.
         if not char.isalpha():
             continue
 
-        # Create the required dictionary structure and append it to the list
+        # Create the required dictionary format: {"char": 'a', "num": 12345}
         sorted_list.append({"char": char, "num": count})
 
-    # Sort the list: reverse=True for descending order, key=sort_on for sorting by "num"
+    # Sort the list:
+    # 1. reverse=True: Sorts in descending order (highest count first).
+    # 2. key=sort_on: Uses the sort_on function to extract the 'num' value for comparison.
     sorted_list.sort(reverse=True, key=sort_on)
 
     return sorted_list
